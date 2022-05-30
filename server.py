@@ -59,6 +59,8 @@ def purchasePlaces():
         flash(f"You cannot book more than {places_allowed} place(s), due to the number of points held.")
     elif placesRequired > MAX_PLACES_PER_COMPETITION:
         flash(f"You cannot book more than {MAX_PLACES_PER_COMPETITION} places per competition.")
+    elif placesRequired > int(competition['numberOfPlaces']):
+        flash(f"You cannot reserve more places than are available in the competition.")
     else:
         competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - placesRequired
         club["points"] = places_allowed - placesRequired * POINTS_FOR_A_PLACE

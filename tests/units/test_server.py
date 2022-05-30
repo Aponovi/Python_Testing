@@ -46,3 +46,13 @@ class TestPurchaseClass:
                                )
         assert response.status_code == 200
         assert f"You cannot book more than {MAX_PLACES_PER_COMPETITION} places per competition" in response.data.decode()
+
+    def test_purchase_more_places_than_available_in_competition(self, client, mock_competitions_and_clubs):
+        input_value = {'club': 'Second Test Club',
+                       'competition': 'Little Competition',
+                       'places': 5
+                       }
+        response = client.post('/purchasePlaces', data=input_value
+                               )
+        assert response.status_code == 200
+        assert f"You cannot reserve more places than are available in the competition" in response.data.decode()

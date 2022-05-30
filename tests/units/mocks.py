@@ -30,6 +30,10 @@ def mock_loadCompetitions():
             "name": "Fall Classic",
             "date": "2020-10-22 13:30:00",
             "numberOfPlaces": "13"
+        },{
+            "name": "Little Competition",
+            "date": "2020-10-22 13:30:00",
+            "numberOfPlaces": "2"
         },
     ]
     return competitions
