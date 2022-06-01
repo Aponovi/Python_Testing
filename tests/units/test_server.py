@@ -1,3 +1,5 @@
+import datetime
+
 from server import POINTS_FOR_A_PLACE, MAX_PLACES_PER_COMPETITION
 
 
@@ -21,8 +23,7 @@ class TestPurchaseClass:
                        'competition': 'Spring Festival',
                        'places': 2
                        }
-        response = client.post('/purchasePlaces', data=input_value
-                               )
+        response = client.post('/purchasePlaces', data=input_value)
         assert response.status_code == 200
         assert "Great-booking complete" in response.data.decode()
         assert f"Points available: {expected_club_value}"
@@ -42,8 +43,7 @@ class TestPurchaseClass:
                        'competition': 'Spring Festival',
                        'places': 13
                        }
-        response = client.post('/purchasePlaces', data=input_value
-                               )
+        response = client.post('/purchasePlaces', data=input_value)
         assert response.status_code == 200
         assert f"You cannot book more than {MAX_PLACES_PER_COMPETITION} places per competition" in response.data.decode()
 
@@ -52,7 +52,15 @@ class TestPurchaseClass:
                        'competition': 'Little Competition',
                        'places': 5
                        }
-        response = client.post('/purchasePlaces', data=input_value
-                               )
+        response = client.post('/purchasePlaces', data=input_value)
         assert response.status_code == 200
         assert f"You cannot reserve more places than are available in the competition" in response.data.decode()
+
+    def test_purchase_places_for_a_past_competition(self, client, mock_competitions_and_clubs):
+        input_value = {'club': 'Second Test Club',
+                       'competition': 'An Old Competition',
+                       'places': 2
+                       }
+        response = client.post('/purchasePlaces', data=input_value)
+        assert response.status_code == 200
+        assert f"past competition" in response.data.decode()

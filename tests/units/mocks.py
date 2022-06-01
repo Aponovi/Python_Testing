@@ -23,17 +23,23 @@ def mock_loadCompetitions():
     competitions = [
         {
             "name": "Spring Festival",
-            "date": "2020-03-27 10:00:00",
+            "date": "2023-03-27 10:00:00",
             "numberOfPlaces": "25"
         },
         {
             "name": "Fall Classic",
-            "date": "2020-10-22 13:30:00",
+            "date": "2022-10-22 13:30:00",
             "numberOfPlaces": "13"
-        },{
+        },
+        {
             "name": "Little Competition",
-            "date": "2020-10-22 13:30:00",
+            "date": "2022-10-22 13:30:00",
             "numberOfPlaces": "2"
+        },
+        {
+            "name": "An Old Competition",
+            "date": "2001-10-22 13:30:00",
+            "numberOfPlaces": "5"
         },
     ]
     return competitions
