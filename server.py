@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, redirect, flash, url_for
 POINTS_FOR_A_PLACE = 1
 MAX_PLACES_PER_COMPETITION = 12
 
+
 def loadClubs():
     with open('clubs.json') as c:
         listOfClubs = json.load(c)['clubs']
@@ -69,6 +70,7 @@ def purchasePlaces():
         club["points"] = places_allowed - placesRequired * POINTS_FOR_A_PLACE
         flash('Great-booking complete!')
     return render_template('welcome.html', club=club, competitions=competitions)
+
 
 # TODO: Add route for points display
 
