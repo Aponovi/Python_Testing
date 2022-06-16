@@ -2,7 +2,7 @@ import datetime
 import json
 from flask import Flask, render_template, request, redirect, flash, url_for
 
-POINTS_FOR_A_PLACE = 1
+POINTS_FOR_A_PLACE = 3
 MAX_PLACES_PER_COMPETITION = 12
 
 
